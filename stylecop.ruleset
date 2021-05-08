@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="StyleCop ruleset" ToolsVersion="14.0">
+    <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
+        <Rule Id="CA1002" Action="None" />
+        <Rule Id="CA1019" Action="None" />
+        <Rule Id="CA1031" Action="None" />
+        <Rule Id="CA1034" Action="None" />
+        <Rule Id="CA1054" Action="None" />
+        <Rule Id="CA1055" Action="None" />
+        <Rule Id="CA1056" Action="None" />
+        <Rule Id="CA1062" Action="None" />
+        <Rule Id="CA1305" Action="None" />
+        <Rule Id="CA1307" Action="None" />
+        <Rule Id="CA1308" Action="None" />
+        <Rule Id="CA1310" Action="None" />
+        <Rule Id="CA1724" Action="None" />
+        <Rule Id="CA1801" Action="None" />
+        <Rule Id="CA1819" Action="None" />
+        <Rule Id="CA1822" Action="None" />
+        <Rule Id="CA2007" Action="None" />
+        <Rule Id="CA2201" Action="None" />
+        <Rule Id="CA2208" Action="None" />
+        <Rule Id="CA2227" Action="None" />
+        <Rule Id="CA5395" Action="None" />
+    </Rules>
+    <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.Analyzers" RuleNamespace="Microsoft.CodeAnalysis.CSharp.Analyzers">
+        <Rule Id="RS1022" Action="None" /> <!-- https://github.com/dotnet/roslyn-analyzers/issues/1803 -->
+    </Rules>
+    <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.CodeStyle" RuleNamespace="Microsoft.CodeAnalysis.CSharp.CodeStyle">
+        <Rule Id="IDE0055" Action="Warning" />
+    </Rules>
+    <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.Features" RuleNamespace="Microsoft.CodeAnalysis.CSharp.Features">
+        <Rule Id="IDE0003" Action="None" />
+    </Rules>
+    <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+        <Rule Id="SA0001" Action="None" />
+        <Rule Id="SA1305" Action="Warning" />
+        <Rule Id="SA1412" Action="None" />
+        <Rule Id="SA1600" Action="None" />
+        <Rule Id="SA1601" Action="None" />
+        <Rule Id="SA1609" Action="Warning" />
+        <Rule Id="SA1633" Action="None" />
+    </Rules>
+    <Rules AnalyzerId="DocumentationAnalyzers" RuleNamespace="DocumentationAnalyzers">
+        <Rule Id="DOC100" Action="Warning" />
+        <Rule Id="DOC101" Action="Warning" />
+        <Rule Id="DOC102" Action="Warning" />
+        <Rule Id="DOC103" Action="Warning" />
+        <Rule Id="DOC104" Action="Warning" />
+        <Rule Id="DOC105" Action="Warning" />
+        <Rule Id="DOC106" Action="Warning" />
+        <Rule Id="DOC107" Action="Warning" />
+        <Rule Id="DOC108" Action="Warning" />
+        <Rule Id="DOC200" Action="Warning" />
+        <Rule Id="DOC201" Action="Warning" />
+        <Rule Id="DOC202" Action="Warning" />
+        <Rule Id="DOC203" Action="Warning" />
+        <Rule Id="DOC204" Action="Warning" />
+    </Rules>
+</RuleSet>

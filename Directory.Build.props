@@ -1,0 +1,21 @@
+<Project>
+
+    <PropertyGroup>
+        <Nullable>enable</Nullable>
+        <CodeAnalysisRuleset>$(MSBuildThisFileDirectory)stylecop.ruleset</CodeAnalysisRuleset>
+        <LangVersion>9.0</LangVersion>
+        <NoWarn>NU1701;AD0001;CS1701</NoWarn>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+        <TreatWarningsAsErrors Condition="'$(Configuration)'=='Release'">true</TreatWarningsAsErrors>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json"/>
+        <AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.ruleset"/>
+    </ItemGroup>
+    
+</Project>
