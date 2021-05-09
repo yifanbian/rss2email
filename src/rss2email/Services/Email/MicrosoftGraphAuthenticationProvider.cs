@@ -1,6 +1,5 @@
-using Azure.Core;
-using Azure.Identity;
 using Microsoft.Graph;
+using Microsoft.Identity.Client;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -12,20 +11,23 @@ namespace RssToEmail
     public sealed class MicrosoftGraphAuthenticationProvider : IAuthenticationProvider, IDisposable
     {
         private static readonly string[] s_scopes = { "https://graph.microsoft.com/.default" };
-        private readonly TokenCredential _credential;
+
+        private readonly IConfidentialClientApplication _cca;
         private readonly SemaphoreSlim _semaphore = new(1, 1);
 
-        private AccessToken? _authenticationResult;
+        private AuthenticationResult? _authenticationResult;
 
-        public MicrosoftGraphAuthenticationProvider()
+        public MicrosoftGraphAuthenticationProvider(string tenantId, string clientId, string clientSecret)
         {
-            _credential = new DefaultAzureCredential();
+            _cca = ConfidentialClientApplicationBuilder.Create(clientId)
+                .WithClientSecret(clientSecret)
+                .WithAuthority(new Uri($"https://login.microsoftonline.com/{tenantId}/v2.0"))
+                .Build();
         }
 
         public async Task AuthenticateRequestAsync(HttpRequestMessage request)
         {
-            string accessToken = await GetAccessTokenAsync();
-            request.Headers.Authorization = new AuthenticationHeaderValue("bearer", accessToken);
+            request.Headers.Authorization = new AuthenticationHeaderValue("bearer", await GetAccessTokenAsync());
         }
 
         public void Dispose()
@@ -39,12 +41,12 @@ namespace RssToEmail
             {
                 await _semaphore.WaitAsync();
                 if (_authenticationResult == null ||
-                    _authenticationResult.Value.ExpiresOn.UtcDateTime < DateTime.UtcNow.AddMinutes(-1))
+                    _authenticationResult.ExpiresOn.UtcDateTime < DateTime.UtcNow.AddMinutes(-1))
                 {
-                    _authenticationResult = await _credential.GetTokenAsync(new TokenRequestContext(s_scopes), default);
+                    _authenticationResult = await _cca.AcquireTokenForClient(s_scopes).ExecuteAsync();
                 }
 
-                return _authenticationResult.Value.Token;
+                return _authenticationResult.AccessToken;
             }
             finally
             {

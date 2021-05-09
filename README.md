@@ -44,6 +44,18 @@ Here is a example of `appsettings.json`.
 }
 ```
 
+`Email:Type` can be `Smtp` or `MicrosoftGraph`.
+If `Email:Type` is `MicrosoftGraph`, `Email:Config` should be like this:
+
+```json
+{
+  "TenantId": "00000000-0000-0000-0000-000000000000",
+  "ClientId": "00000000-0000-0000-0000-000000000000",
+  "ClientSecret": "?",
+  "From": "rss2email@example.com"
+}
+```
+
 To provide configuration with environment variables (such as on Azure Portal),
 check out the **Environment variables** section in
 [Configuration in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/).
