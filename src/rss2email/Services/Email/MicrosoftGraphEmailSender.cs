@@ -1,4 +1,4 @@
-﻿using Microsoft.Graph;
+using Microsoft.Graph;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net.Mail;

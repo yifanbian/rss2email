@@ -23,7 +23,7 @@ namespace RssToEmail
 
         [FunctionName(nameof(TimeTrigger))]
         public static async Task TimeTrigger(
-            [TimerTrigger("0 */10 * * * *")] TimerInfo timer,
+            [TimerTrigger("0 */10 * * * *", RunOnStartup = true)] TimerInfo timer,
             [DurableClient] IDurableClient durableClient,
             ILogger log)
         {
