@@ -34,9 +34,7 @@ namespace RssToEmail
         }
 
         [FunctionName("RssToEmail")]
-        public async Task RunOrchestrator(
-            [OrchestrationTrigger] IDurableOrchestrationContext context,
-            [DurableClient] IDurableEntityClient entityClient)
+        public async Task RunOrchestrator([OrchestrationTrigger] IDurableOrchestrationContext context)
         {
             var subscriptions = _rssToEmailConfig.Value.Subscriptions;
             var tasks = subscriptions
